@@ -1,15 +1,82 @@
-/* heart + confetti animation */
-.heart{
-  position:fixed;
-  font-size:1.6rem;
-  animation-name:float;
-  animation-timing-function:linear;
-  z-index:1000;
-  pointer-events:none;
-  opacity:1;
+/* ------------------------------
+   Global Body & Fonts
+--------------------------------*/
+body {
+  background-color: #ffe6f0; /* pastelowy różowy */
+  font-family: 'Arial', sans-serif;
+  text-align: center;
+  margin: 0;
+  padding: 20px;
 }
 
-@keyframes float{
+/* ------------------------------
+   Headings & Paragraphs
+--------------------------------*/
+h2 {
+  color: #ff3399;
+}
+
+p {
+  font-size: 18px;
+  color: #333;
+}
+
+/* ------------------------------
+   Inputs & Buttons
+--------------------------------*/
+input[type="text"] {
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #ff66cc;
+  border-radius: 6px;
+  margin-top: 10px;
+}
+
+button, .link-btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  margin-left: 10px;
+  margin-top: 10px;
+  cursor: pointer;
+  background-color: #ff66cc;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  text-decoration: none;
+  display: inline-block;
+}
+
+/* ------------------------------
+   Button Hover Effects
+--------------------------------*/
+button:hover, .link-btn:hover {
+  animation: bounce 0.3s;
+  background-color: #ff3399;
+}
+
+/* ------------------------------
+   Bounce Animation
+--------------------------------*/
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+/* ------------------------------
+   Floating Hearts & Confetti
+--------------------------------*/
+.heart {
+  position: fixed;
+  font-size: 1.6rem;
+  animation-name: float;
+  animation-timing-function: linear;
+  z-index: 1000;
+  pointer-events: none;
+  opacity: 1;
+}
+
+/* Float Animation */
+@keyframes float {
   0% { transform: translateY(0) rotate(0deg); opacity:1; }
   25% { transform: translateY(-20vh) rotate(45deg); }
   50% { transform: translateY(-50vh) rotate(90deg); }
@@ -17,7 +84,7 @@
   100% { transform: translateY(-110vh) rotate(180deg); opacity:0; }
 }
 
-/* Optional: slight sway for more natural movement */
+/* Optional Sway for Natural Movement */
 .heart::after {
   content: '';
   position: absolute;
@@ -31,12 +98,17 @@
   50% { transform: translateX(10px); }
 }
 
-/* Make buttons bounce a bit on hover */
-button:hover {
-  animation: bounce 0.3s;
+/* ------------------------------
+   Frog Emoji
+--------------------------------*/
+#frog {
+  font-size: 50px;
+  cursor: pointer;
+  margin-top: 20px;
+  display: inline-block;
+  transition: transform 0.2s;
 }
 
-@keyframes bounce{
-  0%,100% {transform:translateY(0);}
-  50% {transform:translateY(-8px);}
+#frog:hover {
+  transform: scale(1.2);
 }
