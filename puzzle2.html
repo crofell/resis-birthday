@@ -1,46 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Puzzle 2 — Rain Date</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Puzzle 2</title>
+<style>
+  body { font-family: sans-serif; text-align: center; margin-top: 50px; }
+  input { padding: 10px; font-size: 16px; }
+  button { padding: 10px 20px; font-size: 16px; margin-left: 10px; cursor: pointer; }
+  .link-btn { display:inline-block; padding:10px 20px; background:#ff66cc; color:white; text-decoration:none; margin-top:20px; }
+</style>
 </head>
 <body>
-  <div class="container puzzle">
-    <h1>🌧️ Puzzle 2</h1>
-    <p>Where did our crazy rain date happen? (city name)</p>
 
-    <input id="answer" placeholder="Type city name..." autocomplete="off">
-    <button id="check">Check</button>
+<h2>Puzzle 2</h2>
+<p>Which city did we visit together on that crazy adventure? 🌴</p>
 
-    <div id="note" class="result"></div>
-    <div id="next-area" style="margin-top:14px;"></div>
-  </div>
+<input type="text" id="city-input" placeholder="Enter city">
+<button id="check-btn">Check</button>
 
-  <script>
-    const checkBtn = document.getElementById('check');
-    const input = document.getElementById('answer');
-    const note = document.getElementById('note');
-    const nextArea = document.getElementById('next-area');
+<div id="next" style="margin-top:20px;"></div>
 
-    checkBtn.addEventListener('click', () => {
-      const val = input.value.trim().toLowerCase();
-      if (!val) {
-        alert('Type something, please 😄');
-        return;
-      }
-      if (val.includes('pattaya')) {
-        note.textContent = 'Yes! That rainy chaos was ours 🌧️❤️';
-        note.classList.add('good');
-        nextArea.innerHTML = '<a class="link-btn" href="puzzle3.html">➡️ Next Puzzle</a>';
-      } else {
-        note.textContent = 'Not quite — think of that wet, silly night...';
-        note.classList.remove('good');
-      }
-    });
+<script>
+document.getElementById('check-btn').addEventListener('click', () => {
+    const val = document.getElementById('city-input').value.trim().toLowerCase();
+    const nextDiv = document.getElementById('next');
+    
+    if(val.includes("bangkok")) {
+        nextDiv.innerHTML = '<a class="link-btn" href="puzzle3.html">🎉 Next Puzzle</a>';
+    } else {
+        alert("Try again!");
+    }
+});
+</script>
 
-    input.addEventListener('keydown', (e) => { if (e.key === 'Enter') checkBtn.click(); });
-  </script>
 </body>
 </html>
