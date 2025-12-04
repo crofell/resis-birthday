@@ -1,33 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Puzzle 2</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="utf-8">
+  <title>Puzzle 2 — Rain Date</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="container puzzle">
+    <h1>🌧️ Puzzle 2</h1>
+    <p>Where did our crazy rain date happen? (city name)</p>
 
-<h2>Puzzle 2</h2>
-<p>Which city did we visit together on that crazy adventure? 🌴</p>
+    <input id="answer" placeholder="Type city name..." autocomplete="off">
+    <button id="check">Check</button>
 
-<input type="text" id="city-input" placeholder="Enter city">
-<button id="check-btn">Check</button>
+    <div id="note" class="result"></div>
+    <div id="next-area" style="margin-top:14px;"></div>
+  </div>
 
-<div id="next" style="margin-top:20px;"></div>
+  <script>
+    const checkBtn = document.getElementById('check');
+    const input = document.getElementById('answer');
+    const note = document.getElementById('note');
+    const nextArea = document.getElementById('next-area');
 
-<script>
-document.getElementById('check-btn').addEventListener('click', () => {
-    const val = document.getElementById('city-input').value.trim().toLowerCase();
-    const nextDiv = document.getElementById('next');
-    
-    if(val.includes("bangkok")) {
-        nextDiv.innerHTML = '<a class="link-btn" href="puzzle3.html">🎉 Next Puzzle</a>';
-    } else {
-        alert("Try again!");
-    }
-});
-</script>
+    checkBtn.addEventListener('click', () => {
+      const val = input.value.trim().toLowerCase();
+      if (!val) {
+        alert('Type something, please 😄');
+        return;
+      }
+      if (val.includes('pattaya')) {
+        note.textContent = 'Yes! That rainy chaos was ours 🌧️❤️';
+        note.classList.add('good');
+        nextArea.innerHTML = '<a class="link-btn" href="puzzle3.html">➡️ Next Puzzle</a>';
+      } else {
+        note.textContent = 'Not quite — think of that wet, silly night...';
+        note.classList.remove('good');
+      }
+    });
 
+    input.addEventListener('keydown', (e) => { if (e.key === 'Enter') checkBtn.click(); });
+  </script>
 </body>
 </html>
