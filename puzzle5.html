@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Puzzle 5 — Click 3 Frogs</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container puzzle">
+    <h1>🐸 Puzzle 5</h1>
+    <p>Click the little frog <strong>three times</strong> to show that you're a true frog-singer and unlock the surprise.</p>
+
+    <div style="font-size:4rem; text-align:center;">
+      <button id="frog-btn" class="frog-btn">🐸</button>
+    </div>
+
+    <div id="note" class="result"></div>
+    <div id="next-area" style="margin-top:14px;"></div>
+  </div>
+
+  <script>
+    const frogBtn = document.getElementById('frog-btn');
+    const note = document.getElementById('note');
+    const nextArea = document.getElementById('next-area');
+    let clicks = 0;
+
+    frogBtn.addEventListener('click', () => {
+      clicks++;
+      note.textContent = `Frog clicks: ${clicks} 🐸`;
+      if (clicks >= 3) {
+        note.textContent = "Ribbit x3! You unlocked the surprise 🐸🎉";
+        nextArea.innerHTML = '<a class="link-btn" href="index.html">🎉 Open the Birthday Surprise!</a>';
+      }
+    });
+  </script>
+</body>
+</html>
