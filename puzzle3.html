@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Puzzle 3 — Beach Rescue</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container puzzle">
+    <h1>🏖️ Puzzle 3</h1>
+    <p>What was wrong with Artur on the Pattaya beach when Resi took care of him? (one word)</p>
+
+    <input id="answer" placeholder="Type one word..." autocomplete="off">
+    <button id="check">Check</button>
+
+    <div id="note" class="result"></div>
+    <div id="next-area" style="margin-top:14px;"></div>
+  </div>
+
+  <script>
+    const checkBtn = document.getElementById('check');
+    const input = document.getElementById('answer');
+    const note = document.getElementById('note');
+    const nextArea = document.getElementById('next-area');
+
+    checkBtn.addEventListener('click', () => {
+      const val = input.value.trim().toLowerCase();
+      if (!val) { alert('Try typing a word 😅'); return; }
+      if (val === 'high' || val === 'a little high' || val === 'a little high.') {
+        note.textContent = "Correct — thanks for rescuing me that day 😂❤️";
+        note.classList.add('good');
+        nextArea.innerHTML = '<a class="link-btn" href="puzzle4.html">➡️ Next Puzzle</a>';
+      } else {
+        note.textContent = "Hmm... that doesn't ring a bell. Think 'not drunk' 😉";
+        note.classList.remove('good');
+      }
+    });
+
+    input.addEventListener('keydown', (e) => { if (e.key === 'Enter') checkBtn.click(); });
+  </script>
+</body>
+</html>
