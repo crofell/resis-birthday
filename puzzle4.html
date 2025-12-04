@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Puzzle 4 — Secret Love Gesture</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container puzzle">
+    <h1>😉 Puzzle 4</h1>
+    <p>Only <em>one</em> of these symbols truly represents our crazy romantic connection. Choose wisely.</p>
+
+    <div class="choices big">
+      <button class="pick" data-val="kiss">😘</button>
+      <button class="pick" data-val="middle">🖕</button>
+      <button class="pick" data-val="heart">💖</button>
+    </div>
+
+    <div id="note" class="result"></div>
+    <div id="next-area" style="margin-top:14px;"></div>
+  </div>
+
+  <script>
+    const picks = document.querySelectorAll('.pick');
+    const note = document.getElementById('note');
+    const nextArea = document.getElementById('next-area');
+
+    picks.forEach(p => {
+      p.addEventListener('click', () => {
+        const v = p.dataset.val;
+        if (v === 'middle') {
+          note.textContent = "Bingo — the middle finger of love! Only for the true chaos-couples 🖕❤️😈";
+          note.classList.add('good');
+          nextArea.innerHTML = '<a class="link-btn" href="puzzle5.html">➡️ Next Puzzle</a>';
+        } else {
+          note.textContent = "Close but nope — it's special and a little gross (in a cute way) 😉";
+          note.classList.remove('good');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
