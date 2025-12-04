@@ -55,5 +55,22 @@
 
   <script src="script.js"></script>
 <audio id="birthday-audio" src="hb.mp3"></audio>
+<script>
+const audio = document.getElementById('birthday-audio');
+const revealBtn = document.getElementById('reveal-btn');
+const frog = document.getElementById('frog');
+const message = document.getElementById('message');
+
+// Kliknięcie Reveal
+revealBtn.addEventListener('click', () => {
+    audio.play();
+    message.classList.remove('hidden');
+});
+
+// Kliknięcie żaby
+frog.addEventListener('click', () => {
+    audio.play();
+});
+</script>
 </body>
 </html>
