@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Puzzle 1 — Frog Mode</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container puzzle">
+    <h1>🐸 Puzzle 1</h1>
+    <p>Three creatures stand in front of you. Only one knows the secret to pass.</p>
+
+    <div class="choices">
+      <button class="creature" data-id="frog">🐸</button>
+      <button class="creature" data-id="cat">🐱</button>
+      <button class="creature" data-id="monkey">🐵</button>
+    </div>
+
+    <div id="result" class="result"></div>
+    <div id="next-area" style="margin-top:18px;"></div>
+  </div>
+
+  <script>
+    const buttons = document.querySelectorAll('.creature');
+    const result = document.getElementById('result');
+    const nextArea = document.getElementById('next-area');
+
+    buttons.forEach(b => {
+      b.addEventListener('click', () => {
+        const id = b.dataset.id;
+        if (id === 'frog') {
+          result.textContent = "Ribbit! You may pass, Resi. 🐸";
+          result.classList.add('good');
+          nextArea.innerHTML = '<a class="link-btn" href="puzzle2.html">➡️ Next Puzzle</a>';
+        } else {
+          result.textContent = "Nope — classic wrong creature. Try again 😜";
+          result.classList.remove('good');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
