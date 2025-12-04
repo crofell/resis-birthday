@@ -1,79 +1,4 @@
-:root{
-  --bg1: #ffe6f2;
-  --bg2: #fff0e6;
-  --accent: #ff3399;
-  --accent2: #ff66cc;
-  --muted: #444;
-  --good: #25a86b;
-  --btn: #ff99cc;
-}
-
-*{box-sizing:border-box}
-body{
-  margin:0;
-  font-family: 'Helvetica Neue', Arial, sans-serif;
-  background: linear-gradient(120deg, var(--bg1), var(--bg2));
-  color:var(--muted);
-  min-height:100vh;
-  -webkit-font-smoothing:antialiased;
-}
-
-.container{
-  max-width:880px;
-  margin:40px auto;
-  padding:28px;
-  background:rgba(255,255,255,0.85);
-  border-radius:12px;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.08);
-}
-
-h1{ text-align:center; color:var(--accent); font-size:2.6rem; margin:6px 0 18px; }
-h2{ color:var(--accent2); margin-top:22px; }
-p{ line-height:1.5; font-size:1.05rem; }
-ul{ padding-left:16px; }
-li{ margin:8px 0; font-size:1.05rem; }
-
-button{
-  background:var(--btn);
-  border: none;
-  padding:10px 16px;
-  border-radius:8px;
-  cursor:pointer;
-  font-size:1rem;
-  transition:transform .12s ease, background .12s ease;
-}
-button:hover{ transform:translateY(-3px); }
-.link-btn{
-  display:inline-block;
-  padding:10px 16px;
-  background:#ffd6e8;
-  border-radius:8px;
-  text-decoration:none;
-  color:var(--accent);
-  font-weight:600;
-  box-shadow: 0 6px 12px rgba(255,51,153,0.12);
-}
-
-.puzzle h1{ font-size:2rem; color:#ff4d9e; text-align:center; }
-
-.choices{ display:flex; gap:12px; justify-content:center; margin-top:12px; }
-.creature{ font-size:2rem; padding:12px 18px; border-radius:10px; background:#fff; box-shadow:0 6px 14px rgba(0,0,0,0.06); }
-.creature:hover{ transform:translateY(-4px); }
-
-.result{ margin-top:12px; font-weight:600; }
-.result.good{ color:var(--good); }
-.result:not(.good){ color:#cc3366; }
-
-.choices.big .pick{ font-size:3rem; padding:14px 20px; }
-
-.frog-btn{ background:transparent; border:2px dashed #bfe8c8; border-radius:12px; padding:18px; font-size:2.5rem; }
-
-#hearts{ position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:999; }
-
-#frog{ position:fixed; bottom:18px; right:18px; font-size:3rem; user-select:none; cursor:pointer; transition:transform .12s ease; }
-#frog:hover{ transform:translateY(-6px); }
-
-/* heart animation items */
+/* heart + confetti animation */
 .heart{
   position:fixed;
   font-size:1.6rem;
@@ -81,16 +6,37 @@ button:hover{ transform:translateY(-3px); }
   animation-timing-function:linear;
   z-index:1000;
   pointer-events:none;
+  opacity:1;
 }
 
 @keyframes float{
-  0% { transform: translateY(0) rotate(0); opacity:1; }
-  100% { transform: translateY(-110vh) rotate(120deg); opacity:0; }
+  0% { transform: translateY(0) rotate(0deg); opacity:1; }
+  25% { transform: translateY(-20vh) rotate(45deg); }
+  50% { transform: translateY(-50vh) rotate(90deg); }
+  75% { transform: translateY(-80vh) rotate(135deg); }
+  100% { transform: translateY(-110vh) rotate(180deg); opacity:0; }
 }
 
-/* responsive */
-@media (max-width:600px){
-  .container{ margin:18px; padding:18px; }
-  h1{ font-size:2rem; }
-  .choices{ flex-wrap:wrap; }
-        }
+/* Optional: slight sway for more natural movement */
+.heart::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  animation: sway 2s infinite ease-in-out;
+}
+
+@keyframes sway {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(10px); }
+}
+
+/* Make buttons bounce a bit on hover */
+button:hover {
+  animation: bounce 0.3s;
+}
+
+@keyframes bounce{
+  0%,100% {transform:translateY(0);}
+  50% {transform:translateY(-8px);}
+}
